@@ -1,0 +1,62 @@
+<div id="admin_nav" style="float:right;position:absolute;right:10px;top:100px;">
+  <% if current_admin %>
+    Logged in as <%= current_admin.emp_name %>.
+    <%= link_to "Log out", log_out_path %>
+  <% else %>
+    
+    <%= link_to "log in", log_in_path %>
+  <% end %>
+</div>
+
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
+
+
+
+
+
+
+
+<div id="form">
+<h1 style="font-family:Sans-Serif;font-size:19px;">Leave Application For  <%= current_admin.emp_name %> </h1><br />
+<%= form_for(@form) do |f| %>
+  <% if @form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@form.errors.count, "error") %> prohibited this form from being saved:</h2>
+
+      <ul>
+      <% @form.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <p><%= f.hidden_field :admin_id,:value => current_admin.id %></p>
+ <p><%= f.hidden_field :emp_id,:value => current_admin.emp_id%></p>
+  <p><%= f.hidden_field :emp_name,:value => current_admin.emp_name%></p>
+ <p><%= f.hidden_field :emp_emailid,:value => current_admin.emp_emailid%></p> 
+   
+<dl>
+  
+    <dt><%= f.label :leavetype ,"Leave Type" %></dt>
+    <dd><%= f.text_field :leavetype ,:size => "30",:class=>"required"%></dd>
+  
+  
+   <dt><%= f.label :from %></dt>
+   <dd> <%= f.text_field :from ,:class=>"required"%></dd>
+  
+    <dt><%= f.label :to %></dt>
+    <dd><%= f.text_field :to ,:class=>"required" %></dd>
+  
+    <dt>  <%= f.label :reason ,"Reason"%></dt> 
+    <dd><%= f.text_area :reason ,:size => "50x6" ,:class=>"required"%></dd>
+  
+    <dd><%= f.submit "Submit",:id => 'button'%></dd>
+    
+</dl>
+  
+<% end %>
+
+
+</div>

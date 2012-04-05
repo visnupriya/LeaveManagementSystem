@@ -1,0 +1,55 @@
+<div id="user_nav" style="float:right;position:absolute;right:10px;top:10px;">
+
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.email %>. Not you?
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+  <% end %>
+  
+</div>
+<div id="employee">
+<fieldset><h1 style="text-align:center;">Fill Employee Details</h1><br/>
+<%= form_for @emp, :url => {:controller => "emps", :action => "create"} do |f| %>
+  <% if @emp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@emp.errors.count, "error") %> prohibited this emp from being saved:</h2>
+
+      <ul>
+      <% @emp.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="field">
+    
+  <%= f.hidden_field :dept_id,:value => @dept_id%>
+  </div>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :emailid , "Email Id"%>
+    <%= f.text_field :emailid %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_joining %></br>
+    <%= f.text_field :dateofjoining %>
+  </div>
+  <div class="field">
+    <%= f.label :position %>
+    <%= f.text_field :position %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit", :id=>'registerNew' %>
+  </div>
+  <% end %>
+ 
+  <%#= button_to  'Invite',invitation_path %>
+ 
+
+</fieldset>
+</div>

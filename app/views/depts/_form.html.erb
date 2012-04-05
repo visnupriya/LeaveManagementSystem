@@ -1,0 +1,37 @@
+<div id="user_nav" style="float:right;position:absolute;right:10px;top:10px;">
+
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.email %>. Not you?
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+  <% end %>
+  
+</div>
+<div id="registration">
+<fieldset><h1 style="text-align:center;">New dept</h1>
+<%= form_for(@dept) do |f| %>
+  <% if @dept.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dept.errors.count, "error") %> prohibited this dept from being saved:</h2>
+
+      <ul>
+      <% @dept.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :department %><br />
+    <%= f.text_field :department %>
+  </div>
+  <div class="actions">
+    <%= f.submit "create" ,:id=>'registerNew'  %>
+  </div>
+<% end %>
+
+</fieldset>
+</div>

@@ -1,0 +1,46 @@
+<div id="user_nav" style="float:right;position:absolute;right:10px;top:10px;">
+
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.email %>. Not you?
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+  <% end %>
+  
+</div>	
+<div id="form">
+<h1>Applied Leave details</h1><br/>
+
+<table class="listing">
+  <tr class="header">
+    <th>Employee Name</th>
+    <th>Leavetype</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Reason</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<tbody>
+
+<% @forms.each do |form| %>
+  <tr class="<%= cycle("list-line-odd", "list-line-even", :name => "active") %>">
+    <td><%= form.emp_name %></td>
+    <td><%= form.leavetype %></td>
+    <td><%= form.from %></td>
+    <td><%= form.to %></td>
+    <td><%= form.reason %></td>
+    <td><%= link_to 'approval', form %></td>
+    <td><%#= link_to 'Edit', edit_form_path(form) %></td>
+    <td><%#= link_to 'Destroy', form, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%#= link_to 'Approve',:controller => '' , :action='' ,:method => :post %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Go to', depts_path %>
+</div>

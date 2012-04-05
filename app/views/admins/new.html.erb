@@ -1,0 +1,36 @@
+
+<div id="registration">
+<fieldset>
+<h1 style="font-size:15px;">Welcome <%= @empname %> <br/>Signup your account for applying leave </h1>
+
+<%= form_for @admin  do |f| %>
+  <% if @admin.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @admin.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p><%= f.hidden_field :emp_id,:value => @empid%></p>
+  <p><%= f.hidden_field :emp_name,:value => @empname%></p>
+  <p><%= f.hidden_field :emp_emailid,:value => @mailid%></p> 
+  <p>
+    <%= f.label :token %><br />
+    <%= f.text_field :token %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </p><br/>
+  <p class="button"><%= f.submit "Submit",:id=>'button'%></p>
+<% end %>
+</fieldset>
+</div>
+

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  from: 2011-11-17
+  to: 2011-11-17
+  leavetype: MyString
+  description: MyText
+
+two:
+  name: MyString
+  from: 2011-11-17
+  to: 2011-11-17
+  leavetype: MyString
+  description: MyText

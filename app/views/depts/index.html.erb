@@ -1,0 +1,58 @@
+
+			
+<div id="user_nav" style="float:right;position:absolute;right:10px;top:10px;">
+
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.email %>. Not you?
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+  <% end %>
+  
+</div>			
+<div id="deptform">
+<fieldset>
+
+
+<h1 style="text-align:center;">Department List</h1><br/>
+
+<table class="listing">
+  <tr class="header">
+    <th>Department</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<tbody>
+<% @depts.each do |dept| %>
+  <tr class="<%= cycle("list-line-odd", "list-line-even", :name => "active") %>">
+    <td><%= dept.department %><br/></td>
+    <td><%= link_to 'Show', dept %></td>
+
+    <td><%= link_to 'Edit', edit_dept_path(dept) %></td>
+    <td><%= link_to 'Destroy', dept, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'AddNewEmployee', "dept/#{dept.id}/emp/new" %></td>
+    <td> <%#= link_to 'Show employees', dept_emp_path(emp) %></td>
+    <td><%= link_to 'EmployeeDetails' ,dept_emps_path(dept) %></td>
+    
+    
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br/>
+
+
+  
+<div style="position:absolute;left:10%;width:50%;">
+<%#= link_to 'New Dept', new_dept_path %> 
+<%= button_to "AddNewDepartment",new_dept_path , :method => "get",:id => 'button' %></div>
+<div style="position:absolute;left:45%;width:50%;">
+<%= button_to "EmployeeLeaveDetails", forms_path, :method => "get",:id => 'button' %>
+<%#=link_to 'EmployeeLeave Details', forms_path %>
+</div><br/>
+</fieldset>
+</div>
+
+

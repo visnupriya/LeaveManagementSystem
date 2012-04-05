@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  leavetype: MyString
+  from: 2011-11-19
+  to: 2011-11-19
+  reason: MyText
+
+two:
+  leavetype: MyString
+  from: 2011-11-19
+  to: 2011-11-19
+  reason: MyText

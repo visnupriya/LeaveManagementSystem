@@ -1,0 +1,35 @@
+<script type="text/javascript">
+  $(document).ready(function(){ 
+    
+jQuery("#token").validate({
+              expression: "if ( VAL) return true; else return false;",
+                    message: "** Please enter valid token"
+                });
+         jQuery("#password").validate({
+              expression: "if ( VAL) return true; else return false;",
+                    message: "** Please enter correct password"
+                });
+        
+  });
+
+</script>
+
+<div style="position:absolute;top:80px;text-align:center;font-size:15px;"><p id="notice"><%= notice %></p></div>
+<div id="registration">
+<fieldset><h1>Log in</h1>
+
+
+<%= form_tag session1s_path,:class=>'new_admin' do %>
+  <p>
+    <%= label_tag :token %><br />
+    <%= text_field_tag :token, params[:token] %>
+  </p>
+  <p>
+    <%= label_tag :password %><br />
+    <%= password_field_tag :password %>
+  </p>
+  <p class="button"><%= submit_tag "Log in" ,:id=>'registerNew' %></p>
+<% end %>
+</fieldset>
+</div>
+

@@ -1,0 +1,46 @@
+<div id="user_nav" style="float:right;position:absolute;right:10px;top:10px;">
+
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.email %>. Not you?
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+  <% end %>
+  
+</div>
+<div id="empform">
+<fieldset>
+<h1 style="text-align:center;">Employee details</h1><br/>
+
+<table class="listing">
+  <tr class="header">
+    <th>Name</th>
+    <th>Email Id</th>
+    <th>Date of joining</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<tbody>
+<% @emps.each do |emp| %>
+  <tr class="<%= cycle("list-line-odd", "list-line-even", :name => "active") %>">
+    <td><%= emp.name %></td>
+    <td><%= emp.emailid %></td>
+    <td><%= emp.dateofjoining %></td>
+    <td><%= emp.position %></td>
+    <td><%#= link_to 'Show', dept_emp_path(@dept,emp) %></td>
+    <td><%#= link_to 'Edit', edit_dept_emp_path %></td>
+    <td><%#= link_to 'Destroy', @emp, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'invite',"/emp/#{emp.id}/invitation/new" %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'Back', depts_path %> |
+<%= link_to 'Add New Employee', new_dept_emp_path %>
+</fieldset>
+</div>

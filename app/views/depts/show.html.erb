@@ -1,0 +1,51 @@
+
+<div id="user_nav" style="float:right;position:absolute;right:10px;top:10px;">
+
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.email %>. Not you?
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+  <% end %>
+  
+</div>
+<div id="deptform">
+<fieldset>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Department:</b>
+  <%= @dept.department %>
+</p>
+
+<table> 
+  <tr>
+    <th>Name</th>
+    <th>Emailid</th>
+    <th>Dateofjoining</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @emps.each do |emp| %>
+  <tr>
+    <td><%= emp.name %></td>
+    <td><%= emp.emailid %></td>
+    <td><%= emp.dateofjoining %></td>
+    <td><%= emp.position %></td>
+    <td><%= link_to 'Show', dept_emp_path(@dept, emp) %></td>
+    <td><%#= link_to 'Edit', edit_dept_emp_path(@dept, emp) %></td>
+    <td><%#=link_to 'invite',"dept/#{dept.dept_id}/emp/#{emp.id}/invitation/new" %></td>
+    <td><%#= link_to 'Destroy',@emp,  :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+<tr><%#=link_to 'New emp',new_dept_emp_path %></tr>
+</table>
+
+
+<%= link_to 'Edit', edit_dept_path(@dept) %> |
+<%= link_to 'Back', depts_path %>
+</fieldset>
+</div>

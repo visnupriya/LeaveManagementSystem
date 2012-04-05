@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CompanyDetail</title>
+<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" ,"style"%>
+<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" ,"user"%>
+ 
+
+<%= javascript_include_tag :defaults,"rails.validations" ,"jquery.validate.js","jquery.validate-focusout", "jquery.validation.functions"%>
+
+
+ <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+<div id="title" style="float:right;position:absolute;top:18px;float:left;left:20px;font-size:15px"><h1>LeaveManagementSystem</h1></div>
+<hr style="float:right;position:absolute;top:70px;width:100%;height:8px;background-color:black;"/>
+
+<%= yield %>
+
+</body>
+</html>

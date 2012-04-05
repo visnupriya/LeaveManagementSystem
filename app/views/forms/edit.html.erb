@@ -1,0 +1,42 @@
+<div id="admin_nav" style="float:right;position:absolute;right:10px;top:100px;">
+  <% if current_admin %>
+    Logged in as <%= current_admin.emp_name %>.
+    <%= link_to "Log out", log_out_path %>
+  
+  <% end %>
+</div>
+
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
+
+<div id="form1">
+
+
+
+<dl>
+  
+
+  <dt><b>Leavetype:</b></dt>
+  <dd><%= @form.leavetype %></dd>
+
+
+
+  <dt><b>From:</b></dt>
+  <dd><%= @form.from %></dd>
+
+
+
+  <dt><b>To:</b></dt>
+  <dd><%= @form.to %></dd>
+
+
+
+  <dt><b>Reason:</b></dt>
+  <dd><%= @form.reason %></dd>
+</dl>
+
+
+
+
+</div>
